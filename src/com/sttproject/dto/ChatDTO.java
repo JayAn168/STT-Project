@@ -1,30 +1,12 @@
 package com.sttproject.dto;
 
 public class ChatDTO {
-	int chatid;
-	String fromid;
-	String toid;
+	int chatID;
+	String fromID;
+	String toID;
 	String chatContent;
 	String chatTime;
 	
-	public int getChatid() {
-		return chatid;
-	}
-	public void setChatid(int chatid) {
-		this.chatid = chatid;
-	}
-	public String getFromid() {
-		return fromid;
-	}
-	public void setFromid(String fromid) {
-		this.fromid = fromid;
-	}
-	public String getToid() {
-		return toid;
-	}
-	public void setToid(String toid) {
-		this.toid = toid;
-	}
 	public String getChatContent() {
 		return chatContent;
 	}
@@ -36,6 +18,24 @@ public class ChatDTO {
 	}
 	public void setChatTime(String chatTime) {
 		this.chatTime = chatTime;
+	}
+	public int getChatID() {
+		return chatID;
+	}
+	public void setChatID(int chatID) {
+		this.chatID = chatID;
+	}
+	public String getFromID() {
+		return fromID;
+	}
+	public void setFromID(String fromID) {
+		this.fromID = fromID;
+	}
+	public String getToID() {
+		return toID;
+	}
+	public void setToID(String toID) {
+		this.toID = toID;
 	}
 	
 }

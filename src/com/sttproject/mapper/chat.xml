@@ -3,5 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Chat">
+ 	<select id="getChatListByID" resultType="chatdto" parameterType="hashmap">
+	select * from chat where ((fromID = #{fromID} and toID = #{toID}) or 
+	(fromID = #{toID} and toID = {#fromID})) and chatID > #{chatID} order by chatTime 
+	</select>
+ 	<select id="getChatListByRecent" resultType="chatdto" parameterType="hashmap">
+	select * from chat where ((fromID = #{fromID} and toID = #{toID}) or 
+	(fromID = #{toID} and toID = {#fromID})) and chatID > (select max(chatID) - #{number} from chat) order by chatTime 
+	</select>
+	<insert id="submit" parameterType="hashmap">
+		insert into chat(fromID,toID,chatContent,chatTime) 
+		values (#{fromID},#{toID},#{chatContent},now())
+	</insert>
 
 </mapper>

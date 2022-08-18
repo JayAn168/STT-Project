@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="${cp}/css/header.css">
     <link rel="stylesheet" href="${cp}/css/loginview.css" />
     <!-- JS -->
-    <script defer src="${cp}/js/main.js"></script>
     <script type="text/javascript" src="http://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 </head>
@@ -242,6 +241,7 @@
   body.style.overflow = "hidden";
   // 모달 off
   body.style.overflow = "auto";
+  
   Kakao.init("8d4eab699192415f5b2eb69fb710606d");
   function kakaoLogin(){
     Kakao.Auth.loginForm({

@@ -39,6 +39,7 @@ public class ChatFrontController extends HttpServlet{
 			transfer.setRedirect(false);
 			break;
 		}
+		
 		//전송 일괄처리(어디인지, 어떤 방식인지는 몰라도 그냥 transfer라는 객체에 담겨있는 정보를 해석해서 그대로 페이지를 이동시키는 코드)
 		if(transfer != null) {
 			if(transfer.isRedirect()) {

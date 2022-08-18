@@ -37,8 +37,8 @@
       crossorigin="anonymous"
     ></script>
     <!-- css -->
-    <link rel="stylesheet" href="${cp}/css/chat.css" />
     <link rel="stylesheet" href="${cp}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${cp}/css/chat.css" />
     <!--  -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="${cp}/js/bootstrap.js"></script>
@@ -117,10 +117,10 @@
 	<div class="container bootstrap snippet">
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="portlet protlet-default">
+				<div class="portlet portlet-default">
 					<div class="portlet-heading">
 						<div class="portlet-title">
-							<h4><i class="fa fa-circle text-green"></i>실시간 채팅창</h4>
+							<h4><i class="fa fa-circle text-green"></i> 실시간 채팅창</h4>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -128,6 +128,11 @@
 						<div id="chatList" class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 600px;">
 						</div>
 						<div class="portlet-footer">
+							<div class="row">
+								<div class="form-group col-xs-4">
+									<input style="height: 40px;" type="text" id="chatName" class="form-control" placeholder="이름" maxlength="8">
+								</div>
+							</div>
 							<div class="row" style="height:90px;">
 								<div class="form-group col-xs-10">
 									<textarea style="height:80px;" id="chatContent" class="form-control" placeholder="메시지를 입력하세요." maxlength="100"></textarea>
