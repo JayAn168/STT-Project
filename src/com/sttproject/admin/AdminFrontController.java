@@ -43,7 +43,7 @@ public class AdminFrontController extends HttpServlet {
 			break;
 		case "/admin/smscheckok.ad":
 			try {
-				transfer = new SmsCheckOkAction().execute(req, resp);
+				new SmsCheckOkAction().execute(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

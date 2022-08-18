@@ -20,6 +20,8 @@
 	rel="stylesheet" />
 <link rel="stylesheet" href="${cp}/css/modifypw.css" />
 <link rel="stylesheet" href="${cp}/css/common.css" />
+<script src="https://use.fontawesome.com/350e7194d8.js"></script>	
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script defer src="${cp}/js/modifypw.js"></script>
 </head>
 <body>
@@ -34,13 +36,15 @@
 				<form name="modifyPwForm" action="" method="post"
 					onsubmit="return sendit()">
 					<div class="pw">
-						<div class="input_wrapper" id="userpw1">
+						<div class="input_wrapper" id="userpw1" style="display:flex; justify-content:space-between; align-items:center;">
 							<input type="password" class="input_login" name="userpw"
 								id="userpw" placeholder="새 비밀번호" />
+							<i class="fa fa-eye fa-lg"></i>
 						</div>
-						<div class="input_wrapper" id="userpw2">
+						<div class="input_wrapper" id="userpw2" style="display:flex; justify-content:space-between; align-items:center;">
 							<input type="password" class="input_login" name="userpw_re"
 								id="userpw_re" placeholder="비밀번호 확인" onblur="pwcheck()" />
+							<i class="fa fa-eye fa-lg"></i>
 						</div>
 					</div>
 					<div class="join_button">
@@ -58,6 +62,26 @@
           checkbox.checked = selectAll.checked;
         });
       }
+      
     </script>
+   
+    
+    <script>
+    $(function(){
+        $('.input_wrapper i').on('click',function(){
+            $('input').toggleClass('active');
+            if($('input').hasClass('active')){
+                $(this).attr('class',"fa fa-eye-slash fa-lg")
+                .prev('input').attr('type',"text");
+            }else{
+                $(this).attr('class',"fa fa-eye fa-lg")
+                .prev('input').attr('type','password');
+            }
+        });
+    });
+
+    
+    </script>
+    
 </body>
 </html>
