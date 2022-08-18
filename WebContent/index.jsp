@@ -365,7 +365,7 @@ prefix="c"%>
                 <img src="${cp}/img/ranking-05.png" alt="" class="rank" />
                 <div class="company">
                   <p class="money">451,439,000원</p>
-                  <p class="company_name">꿀로고공장장/승혜</p>
+                  <p class="company_name">꿀로고공장장</p>
                 </div>
                 <img src="${cp}/img/honeylogo.png" alt="" class="c_logo" />
               </a>

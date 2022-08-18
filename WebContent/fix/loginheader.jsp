@@ -56,7 +56,7 @@
               <ul>
                 <li>
                   <div id="msg">
-                    <a href="javascript:void(0)">메시지</a>
+                    <a href="${cp}/chat/chat.ct">메시지</a>
                   </div>
                 </li>
                 <li>

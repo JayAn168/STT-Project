@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+  font-family: "NanumSquareRoundLight";
+  font-family: "NanumSquareRound";
+  font-family: "NanumSquareRoundBold";
+  font-family: "NanumSquareRoundExtraBold";
+}
+
+img {
+  display: block;
+}
+
+.inner {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 노말라이즈 */
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

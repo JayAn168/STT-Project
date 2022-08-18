@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>stt</display-name>
+  <display-name>sttproject</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -24,5 +24,13 @@
 <servlet-mapping>
 	<servlet-name>AdminFrontController</servlet-name>
 	<url-pattern>*.ad</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>ChatFrontController</servlet-name>
+	<servlet-class>com.sttproject.app.chat.ChatFrontController</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ChatFrontController</servlet-name>
+	<url-pattern>*.ct</url-pattern>
 </servlet-mapping>
 </web-app>

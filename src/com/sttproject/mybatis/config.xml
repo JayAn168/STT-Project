@@ -6,6 +6,7 @@
   <typeAliases>
   	<typeAlias type="com.sttproject.dto.UserDTO" alias="userdto"/>  
   	<typeAlias type="com.sttproject.dto.ExpertDTO" alias="expertdto"/>  
+  	<typeAlias type="com.sttproject.dto.ChatDTO" alias="chatdto"/>  
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -21,5 +22,6 @@
   <mappers>
   	<mapper resource="com/sttproject/mapper/user.xml"/>
   	<mapper resource="com/sttproject/mapper/admin.xml"/>
+  	<mapper resource="com/sttproject/mapper/chat.xml"/>
   </mappers>
 </configuration>
