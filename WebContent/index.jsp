@@ -6,6 +6,12 @@ prefix="c"%>
 <!DOCTYPE html>
 <html>
   <head>
+<%
+		String userid = null;
+		if(session.getAttribute("loginUser") != null){
+			userid = (String)session.getAttribute("loginUser");
+		}
+%>
     <meta charset="UTF-8" />
     <title>Set The Table</title>
     <!-- 파비콘 -->
@@ -39,14 +45,40 @@ prefix="c"%>
     <!-- css -->
     <link rel="stylesheet" href="${cp}/css/common.css" />
     <link rel="stylesheet" href="${cp}/css/index.css?after" />
+    <link rel="stylesheet" href="${cp}/css/bootstrap.css" />
     <!-- JS -->
     <script defer src="${cp}/js/main.js"></script>
-    <script>
-      console.log("hello");
-      console.log("bye");
-      console.log("jeahyun");
-      console.log("hyomyeong");
-    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- jQuery에 주요 업데이트가 있을 경우 콘솔에 경고 표시, 해결할 수 있는 문제들은 스스로 해결 -->
+	<script src="https://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script src="${cp}/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function getUnread(){
+			$.ajax({
+				type: "POST",
+				url: "${cp}/chat/chatunread.ct",
+				data: {
+					userid: encodeURIComponent('<%=userid%>'),
+				},
+				success: function(result){
+					if(result >= 1){
+						showUnread(result);
+					}else{
+						showUnread('');
+					}
+				}
+			});
+		}
+		function getInfiniteUnread(){
+			setInterval(function(){
+				getUnread();
+			},4000)
+		}
+		function showUnread(result){
+			$('#unread').html(result);
+		}
+	</script>
   </head>
   <body>
     <c:choose>
@@ -231,7 +263,7 @@ prefix="c"%>
                   <p class="money">1,415,034,727원</p>
                   <p class="company_name">GPAKOREA</p>
                 </div>
-                <img src="./img/gpakorea.png" alt="" class="c_logo" />
+                <img src="${cp}/img/gpakorea.png" alt="" class="c_logo" />
               </a>
             </div>
             <div class="third_ranking ranks">
@@ -384,5 +416,17 @@ prefix="c"%>
     </section>
     <!-- FOOTER -->
     <%@ include file="/fix/footer.jsp" %>
+        <%
+        	if(userid != null){
+        %>
+        	<script type="text/javascript">
+        		$(document).ready(function(){
+        			getUnread();
+        			getInfiniteUnread();
+        		})
+        	</script>
+        <%
+        	}
+        %>
   </body>
 </html>

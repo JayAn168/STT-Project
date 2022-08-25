@@ -56,7 +56,7 @@
               <ul>
                 <li>
                   <div id="msg">
-                    <a href="${cp}/chat/chat.ct">메시지</a>
+                    <a href="${cp}/chat/chat.ct">메시지<span id="unread" class="label label-info" style="background-color: ##3f7fa1;"></span></a>
                   </div>
                 </li>
                 <li>

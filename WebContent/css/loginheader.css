@@ -40,6 +40,10 @@ header .inner #headup ul li #msg {
   font-size: 14px;
   transition: all 0.5s;
 }
+header .inner #headup ul li #msg a{
+	display: flex;
+	align-items: center;
+}
 header .inner #headup ul li #msg:hover {
   background-color: rgba(39, 9, 73, 0.2);
 }

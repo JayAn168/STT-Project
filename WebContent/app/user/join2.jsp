@@ -110,7 +110,7 @@
                 ><input
                   type="radio"
                   name="usergender"
-                  value="W"
+                  value="F"
                   class="gender_pick"
                 />
               </label>

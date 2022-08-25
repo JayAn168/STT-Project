@@ -19,7 +19,7 @@ public class UserJoinOkAction implements Action{
 		user.setUsername(req.getParameter("username"));
 		user.setUsergender(req.getParameter("usergender"));
 		user.setUserphone(req.getParameter("userphone"));
-		
+		System.out.println(user.getUsergender());
 		UserDAO udao = new UserDAO();
 		
 		ActionTo transfer = new ActionTo();

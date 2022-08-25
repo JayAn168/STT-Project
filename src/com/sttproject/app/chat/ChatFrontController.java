@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sttproject.app.user.CheckIdOkAction;
 import com.sttproject.action.ActionTo;
 
 public class ChatFrontController extends HttpServlet{
@@ -16,11 +15,14 @@ public class ChatFrontController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=UTF-8");
 		doProcess(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=UTF-8");
 		doProcess(req, resp);
 	}
 	
@@ -29,14 +31,53 @@ public class ChatFrontController extends HttpServlet{
 		String requestURI = req.getRequestURI(); // ??????/user/userjoin.us
 		String contextPath = req.getContextPath(); // ??????(module명)
 		String command = requestURI.substring(contextPath.length()); // /user/userjoin.us
-		System.out.println(command);
+		System.out.println(command); 
 		ActionTo transfer = null;
 		
 		switch(command) {
 		case "/chat/chat.ct":
 			transfer = new ActionTo();
+			transfer.setPath("/app/chat/box.jsp");
+			transfer.setRedirect(false);
+			break;
+			
+		case "/chat/chatting.ct":
+			transfer = new ActionTo();
 			transfer.setPath("/app/chat/chat.jsp");
 			transfer.setRedirect(false);
+			break;
+			
+		case "/chat/chatsubmit.ct":
+			try {
+				new ChatSubmitAction().execute(req, resp);
+			} catch (Exception e) {
+				System.out.println("/chat/chatsubmit.ct : "+e);
+			}
+			break;
+			
+		case "/chat/chatlist.ct":
+			try {
+				new ChatListAction().execute(req,resp);
+				
+			} catch(Exception e) {
+				System.out.println("/chat/chatlist.ct : " + e);
+			}
+			break;
+			
+		case "/chat/chatunread.ct":
+			try {
+				new ChatUnRead().execute(req,resp);
+			} catch (Exception e) {
+				System.out.println("/chat/chatunread.ct : " + e);
+			}
+			break;
+			
+		case "/chat/getbox.ct":
+			try {
+				new GetChatBoxAction().execute(req,resp);
+			} catch (Exception e) {
+				System.out.println("/chat/chatunread.ct : " + e);
+			}
 			break;
 		}
 		

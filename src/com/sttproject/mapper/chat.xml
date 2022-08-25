@@ -4,16 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Chat">
  	<select id="getChatListByID" resultType="chatdto" parameterType="hashmap">
-	select * from chat where ((fromID = #{fromID} and toID = #{toID}) or 
-	(fromID = #{toID} and toID = {#fromID})) and chatID > #{chatID} order by chatTime 
-	</select>
+		select * from chat where((fromID = #{fromID} and toID = #{toID}) 
+		or (fromID = #{toID} and toID = #{fromID})) and chatID > #{chatID} order by chatTime
+		</select>
  	<select id="getChatListByRecent" resultType="chatdto" parameterType="hashmap">
-	select * from chat where ((fromID = #{fromID} and toID = #{toID}) or 
-	(fromID = #{toID} and toID = {#fromID})) and chatID > (select max(chatID) - #{number} from chat) order by chatTime 
+		select * from chat where((fromID = #{fromID} and toID = #{toID}) or (fromID = #{toID} 
+		and toID = #{fromID})) and chatID > (select max(chatID) - #{number} from chat 
+		where (fromID = #{fromID} and toID = #{toID}) or (fromID= #{toID} and toID = #{fromID})) 
+		order by chatTime
+	</select>
+	<select id="getAllUnreadChat" resultType="_int" parameterType="string">
+		select count(chatID) from chat where toID = #{userid} and chatRead = 0;
+	</select>
+	<select id="getBox" resultType="chatdto" parameterType="string">
+		select * from chat where chatID in (select max(chatID) from chat 
+		where toID = #{userid} or fromID = #{userid} group by fromID, toID)
 	</select>
 	<insert id="submit" parameterType="hashmap">
-		insert into chat(fromID,toID,chatContent,chatTime) 
-		values (#{fromID},#{toID},#{chatContent},now())
+		insert into chat values(null, #{fromID},#{toID},#{chatContent}, NOW(), 0)
 	</insert>
-
+	<update id="readChat" parameterType="hashmap">
+		update chat set chatRead = 1 where (fromID = #{toID} and toID = #{fromID})
+	</update>
 </mapper>
